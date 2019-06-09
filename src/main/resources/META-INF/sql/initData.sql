@@ -1,5 +1,7 @@
 SET SQL_SAFE_UPDATES = 0;
 
+use library;
+
 DELETE FROM users;
 ALTER TABLE users AUTO_INCREMENT = 1;
 DELETE FROM users_borrowed_books;
@@ -31,29 +33,29 @@ INSERT INTO books (title) VALUES ('Ferdydurke');
 INSERT INTO books (title) VALUES ('Ferdydurke');
 
 INSERT INTO authors (first_name, last_name) VALUES ('Adam', 'Mickiewicz');
-INSERT INTO authors_books (1, 1);
-INSERT INTO authors_books (1, 2);
-INSERT INTO authors_books (1, 3);
+INSERT INTO authors_books (author_id, book_id) VALUES (1, 1);
+INSERT INTO authors_books (author_id, book_id) VALUES (1, 2);
+INSERT INTO authors_books (author_id, book_id) VALUES (1, 3);
 INSERT INTO authors (first_name, last_name) VALUES ('Henryk', 'Sienkiewicz');
-INSERT INTO authors_books (2, 4);
-INSERT INTO authors_books (2, 5);
-INSERT INTO authors_books (2, 6);
-INSERT INTO authors_books (2, 7);
-INSERT INTO authors_books (2, 8);
-INSERT INTO authors_books (2, 9);
-INSERT INTO authors_books (2, 10);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 4);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 5);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 6);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 7);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 8);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 9);
+INSERT INTO authors_books (author_id, book_id) VALUES (2, 10);
 INSERT INTO authors (first_name, last_name) VALUES ('Bolesław', 'Prus');
-INSERT INTO authors_books (3, 11);
-INSERT INTO authors_books (3, 12);
-INSERT INTO authors_books (3, 13);
-INSERT INTO authors_books (3, 14);
-INSERT INTO authors_books (3, 15);
+INSERT INTO authors_books (author_id, book_id) VALUES (3, 11);
+INSERT INTO authors_books (author_id, book_id) VALUES (3, 12);
+INSERT INTO authors_books (author_id, book_id) VALUES (3, 13);
+INSERT INTO authors_books (author_id, book_id) VALUES (3, 14);
+INSERT INTO authors_books (author_id, book_id) VALUES (3, 15);
 INSERT INTO authors (first_name, last_name) VALUES ('Stanisław', 'Wyspiański');
-INSERT INTO authors_books (4, 16);
+INSERT INTO authors_books (author_id, book_id) VALUES (4, 16);
 INSERT INTO authors (first_name, last_name) VALUES ('Witold', 'Gombrowicz');
-INSERT INTO authors_books (5, 17);
-INSERT INTO authors_books (5, 18);
-INSERT INTO authors_books (5, 19);
+INSERT INTO authors_books (author_id, book_id) VALUES (5, 17);
+INSERT INTO authors_books (author_id, book_id) VALUES (5, 18);
+INSERT INTO authors_books (author_id, book_id) VALUES (5, 19);
 
 INSERT INTO users (login, password, active, first_name, last_name) VALUES ('TestUser1', '{noop}TestUser1', true, 'Test', 'User');
 INSERT INTO users_roles (login, role) VALUES ('TestUser1', 'ROLE_USER');
