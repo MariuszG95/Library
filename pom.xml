@@ -69,6 +69,24 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.16</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>5.1.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>5.1.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.14.Final</version>
+    </dependency>
   </dependencies>
 
   <build>
