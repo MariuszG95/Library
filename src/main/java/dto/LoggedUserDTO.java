@@ -1,5 +1,7 @@
 package dto;
 
+import data.model.User;
+
 import java.util.Objects;
 
 public class LoggedUserDTO {
@@ -8,6 +10,15 @@ public class LoggedUserDTO {
     private String login;
     private String firstName;
     private String lastName;
+
+    public LoggedUserDTO() {}
+
+    public LoggedUserDTO(User user) {
+        this.id = user.getId();
+        this.login = user.getLogin();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+    }
 
     public Long getId() {
         return id;
