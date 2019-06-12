@@ -57,13 +57,13 @@ INSERT INTO authors_books (author_id, book_id) VALUES (5, 17);
 INSERT INTO authors_books (author_id, book_id) VALUES (5, 18);
 INSERT INTO authors_books (author_id, book_id) VALUES (5, 19);
 
-INSERT INTO users (login, password, active, first_name, last_name) VALUES ('TestUser1', '{noop}TestUser1', true, 'Test', 'User');
+INSERT INTO users (login, password, active, first_name, last_name) VALUES ('TestUser1', '{bcrypt}$2a$10$fuj660/plEaD0lzIYyiQx.Q7f1aXMzrZwnHUKOVy3.hJ7g/skLTse', true, 'Test', 'User');
 INSERT INTO users_roles (login, role) VALUES ('TestUser1', 'ROLE_USER');
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 5);
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 6);
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 7);
 
-INSERT INTO users (login, password, active, first_name, last_name) VALUES ('TestUser2', '{noop}TestUser2', true, 'Test', 'User');
+INSERT INTO users (login, password, active, first_name, last_name) VALUES ('TestUser2', '{bcrypt}$2a$10$fuj660/plEaD0lzIYyiQx.Q7f1aXMzrZwnHUKOVy3.hJ7g/skLTse', true, 'Test', 'User');
 INSERT INTO users_roles (login, role) VALUES ('TestUser2', 'ROLE_USER');
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 11);
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 12);
@@ -71,5 +71,5 @@ INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 13);
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 14);
 INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 15);
 
-INSERT INTO users (login, password, active, first_name, last_name) VALUES ('Admin', '{noop}Admin', true, 'Admin', 'Admin');
+INSERT INTO users (login, password, active, first_name, last_name) VALUES ('Admin', '{bcrypt}$2a$10$fuj660/plEaD0lzIYyiQx.Q7f1aXMzrZwnHUKOVy3.hJ7g/skLTse', true, 'Admin', 'Admin');
 INSERT INTO users_roles (login, role) VALUES ('Admin', 'ROLE_ADMIN');
