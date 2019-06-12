@@ -11,14 +11,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @RequestMapping("/home")
 public class HomeController {
 
-//    @GetMapping
-//    public String get(Model model, @SessionAttribute LoggedUserDTO user) {
-//
-//        model.addAttribute("user", user);
-//
-//        return "home";
-//    }
-
     @GetMapping
     public String get() {
         return "home";

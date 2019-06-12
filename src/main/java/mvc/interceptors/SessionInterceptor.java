@@ -24,7 +24,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
             LoggedUserDTO loggedUserDTO = new LoggedUserDTO(userService.getUser(request.getUserPrincipal().getName()));
             request.getSession().setAttribute("user", loggedUserDTO);
         } catch (NullPointerException npe) {
-            return false;
+            return true;
         }
 
         return super.preHandle(request, response, handler);
