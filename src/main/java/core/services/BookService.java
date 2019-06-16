@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
 import java.util.Set;
 
 @Service
@@ -23,8 +21,12 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book getBookById(Long id) {
+    public Book getOne(Long id) {
         return bookRepository.getOne(id);
+    }
+
+    public Book getBookById(Long id) {
+        return bookRepository.getBookById(id);
     }
 
     public Set<BookDTO> getRandomBooks(int amount) {
@@ -34,7 +36,7 @@ public class BookService {
         Long randomId;
         while (randomBooks.isEmpty() || randomBooks.size() < amount) {
             randomId = 1 + (long) (Math.random() * (amountBooksInDB - 1));
-            randomBooks.add(new BookDTO(bookRepository.getOne(randomId)));
+            randomBooks.add(new BookDTO(getOne(randomId)));
         }
 
         return randomBooks;
