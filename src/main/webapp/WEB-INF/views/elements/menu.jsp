@@ -20,7 +20,7 @@
             %>
         </tr>
         <tr bgcolor="#7fffd4">
-            <td colspan="2"><a href="/home">Strona główna</a></td>
+            <td colspan="2"><a href="/home">Strona główna</a> <a href="/profile">Profil</a> </td>
         </tr>
     </table>
 </div>

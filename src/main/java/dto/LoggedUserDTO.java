@@ -1,23 +1,45 @@
 package dto;
 
+import data.model.Book;
 import data.model.User;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class LoggedUserDTO {
 
     private Long id;
     private String login;
+    private String password;
     private String firstName;
     private String lastName;
+    private boolean active;
+    private Set<Book> books = new HashSet<>();
 
     public LoggedUserDTO() {}
 
     public LoggedUserDTO(User user) {
         this.id = user.getId();
         this.login = user.getLogin();
+        this.password = user.getPassword();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
+        this.active = user.isActive();
+        this.books = user.getBooks();
+    }
+
+    public User getUser() {
+        User user = new User();
+        user.setId(id);
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setActive(active);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setBooks(books);
+
+        return user;
     }
 
     public Long getId() {
@@ -36,6 +58,14 @@ public class LoggedUserDTO {
         this.login = login;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -50,6 +80,22 @@ public class LoggedUserDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override
