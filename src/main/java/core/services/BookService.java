@@ -2,11 +2,13 @@ package core.services;
 
 import data.model.Book;
 import data.repositories.BookRepository;
+import dto.AuthorDTO;
 import dto.BookDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,5 +42,30 @@ public class BookService {
         }
 
         return randomBooks;
+    }
+
+    public Set<BookDTO> searchByTitle(String value) {
+        Set<Book> bookSet = bookRepository.getBookByTitleContains(value);
+        Set<BookDTO> foundBooks = new HashSet<>();
+        for (Book book : bookSet) {
+            foundBooks.add(new BookDTO(book));
+        }
+
+        return foundBooks;
+    }
+
+    public Set<BookDTO> searchByAuthors(Set<AuthorDTO> authorsDTOS) {
+        ArrayList<Long[]> foundBooksId = new ArrayList<>();
+        for (AuthorDTO authorDTO : authorsDTOS) {
+            foundBooksId.add(bookRepository.getBooksIdByAuthorId(authorDTO.getId()));
+        }
+        Set<BookDTO> resultSet = new HashSet<>();
+        for (Long[] arr : foundBooksId) {
+            for (Long l : arr) {
+                resultSet.add(new BookDTO(bookRepository.getBookById(l)));
+            }
+        }
+
+        return resultSet;
     }
 }

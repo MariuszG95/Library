@@ -10,7 +10,7 @@
                 try {
                     String string = request.getUserPrincipal().getName();
                     %>
-            <td align="right"><a href="/user-profile">Profil</a> <a href="/logout">Wyloguj</a></td>
+            <td align="right"><a href="/profile">Profil</a> <a href="/logout">Wyloguj</a></td>
             <%
                 } catch (NullPointerException npe) {
                     %>
@@ -20,7 +20,10 @@
             %>
         </tr>
         <tr bgcolor="#7fffd4">
-            <td colspan="2"><a href="/home">Strona główna</a> <a href="/profile">Profil</a> </td>
+            <td colspan="2">
+                <a href="/home">Strona główna</a>
+                <a href="/search">Szukaj książki</a>
+            </td>
         </tr>
     </table>
 </div>
