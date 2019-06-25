@@ -68,4 +68,34 @@ public class BookService {
 
         return resultSet;
     }
+
+    public Long getAmountOfAvailableBooks(Long bookId) {
+
+        Set<BookDTO> sameBooksInDB = getSameBooksFromDB(new BookDTO(bookRepository.getBookById(bookId)));
+        long avabialeBooks = (long) sameBooksInDB.size();
+        Long[] borrowedBooksId = bookRepository.getBorrowedBooksIds();
+        for (Long l : borrowedBooksId) {
+            for (BookDTO book : sameBooksInDB) {
+                if (book.getId() == l) {
+                    avabialeBooks--;
+                }
+            }
+        }
+
+        return avabialeBooks;
+    }
+
+    public void borrowBook(Long userId, Long bookId) {
+
+        bookRepository.insertBorrowedBook(userId, bookId);
+    }
+
+    private Set<BookDTO> getSameBooksFromDB(BookDTO bookDTO) {
+        Set<BookDTO> bookDTOS = new HashSet<>();
+        for (Book book : bookRepository.getBookByTitle(bookDTO.getTitle())) {
+            bookDTOS.add(new BookDTO(book));
+        }
+
+        return bookDTOS;
+    }
 }

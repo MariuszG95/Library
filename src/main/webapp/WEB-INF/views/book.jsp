@@ -3,9 +3,10 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
-    <title>${book.title}</title>
-</head>
-<body>
+    <c:if test="${book.title != null}">
+        <title>${book.title}</title>
+    </head>
+    <body>
     <div>
         <jsp:include page="elements/menu.jsp"/>
         <div>
@@ -13,6 +14,8 @@
                 <tr>
                     <th>Tytuł</th>
                     <th>Autorzy</th>
+                    <th>Ilość dostępnych sztuk</th>
+                    <th>Wypożycz</th>
                 </tr>
                 <tr>
                     <td>${book.title}</td>
@@ -21,10 +24,23 @@
                             ${author.firstName} ${author.lastName}<c:if test="${!status.last}">, </c:if>
                         </c:forEach>
                     </td>
+                    <td>${availableAmount}</td>
+                    <c:if test="${availableAmount > 0}">
+                        <td><a href="/book/${book.id}/borrow">Kliknij, aby wypożyczyć</a></td>
+                    </c:if>
+                    <c:if test="${availableAmount == 0}">
+                        <td>Pozycja niedostępna</td>
+                    </c:if>
                 </tr>
             </table>
         </div>
     </div>
+    </body></c:if>
+    <c:if test="${book.title == null}">
+        <title>Błąd</title>
+    </head>
+    <body>
+        <p>Aktualnie wybrana pozycja jest już przez Ciebie wypożyczona, spróbuj wypożyczyć inną książkę.</p>
+    </body></c:if>
 
-</body>
 </html>

@@ -89,11 +89,11 @@ INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 7);
 
 INSERT INTO users (login, password, active, first_name, last_name) VALUES ('TestUser2', '{bcrypt}$2a$10$fuj660/plEaD0lzIYyiQx.Q7f1aXMzrZwnHUKOVy3.hJ7g/skLTse', true, 'Test', 'User');
 INSERT INTO users_roles (login, role) VALUES ('TestUser2', 'ROLE_USER');
-INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 11);
-INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 12);
-INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 13);
-INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 14);
-INSERT INTO users_borrowed_books (user_id, book_id) VALUES (1, 15);
+INSERT INTO users_borrowed_books (user_id, book_id) VALUES (2, 11);
+INSERT INTO users_borrowed_books (user_id, book_id) VALUES (2, 12);
+INSERT INTO users_borrowed_books (user_id, book_id) VALUES (2, 13);
+INSERT INTO users_borrowed_books (user_id, book_id) VALUES (2, 14);
+INSERT INTO users_borrowed_books (user_id, book_id) VALUES (2, 15);
 
 INSERT INTO users (login, password, active, first_name, last_name) VALUES ('Admin', '{bcrypt}$2a$10$fuj660/plEaD0lzIYyiQx.Q7f1aXMzrZwnHUKOVy3.hJ7g/skLTse', true, 'Admin', 'Admin');
 INSERT INTO users_roles (login, role) VALUES ('Admin', 'ROLE_ADMIN');
