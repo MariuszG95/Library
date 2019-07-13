@@ -5,6 +5,7 @@ use library;
 DELETE FROM users;
 ALTER TABLE users AUTO_INCREMENT = 1;
 DELETE FROM users_borrowed_books;
+DELETE FROM users_wanted_books;
 DELETE FROM books;
 ALTER TABLE books AUTO_INCREMENT = 1;
 DELETE FROM authors_books;

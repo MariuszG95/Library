@@ -26,17 +26,17 @@
         </div>
         <div>
             <h1>Twoje wypożyczone książki:</h1>
-            <c:if test="${user.books.size() == 0}">
+            <c:if test="${user.borrowedBooks.size() == 0}">
                 Brak wypożyczonych książek.
             </c:if>
-            <c:if test="${user.books.size() > 0}">
+            <c:if test="${user.borrowedBooks.size() > 0}">
                 <table align="center" border="1">
                     <tr>
                         <th>Tytuł</th>
                         <th>Autorzy</th>
                         <th>Akcja</th>
                     </tr>
-                    <c:forEach items="${user.books}" var="book">
+                    <c:forEach items="${user.borrowedBooks}" var="book">
                         <tr>
                             <td>${book.title}</td>
                             <td>

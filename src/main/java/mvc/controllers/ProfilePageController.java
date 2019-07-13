@@ -31,9 +31,9 @@ public class ProfilePageController {
     public String delete(HttpServletRequest request, @PathVariable("id") Long id) {
 
         LoggedUserDTO userDTO = (LoggedUserDTO) request.getSession().getAttribute("user");
-        for (Book borrowedBook : userDTO.getBooks()) {
+        for (Book borrowedBook : userDTO.getBorrowedBooks()) {
             if (borrowedBook.getId() == id) {
-                userDTO.getBooks().remove(borrowedBook);
+                userDTO.getBorrowedBooks().remove(borrowedBook);
                 break;
             }
         }

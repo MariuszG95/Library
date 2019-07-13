@@ -15,7 +15,8 @@ public class LoggedUserDTO {
     private String firstName;
     private String lastName;
     private boolean active;
-    private Set<Book> books = new HashSet<>();
+    private Set<Book> borrowedBooks = new HashSet<>();
+    private Set<Book> wantedBooks = new HashSet<>();
 
     public LoggedUserDTO() {}
 
@@ -26,7 +27,8 @@ public class LoggedUserDTO {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.active = user.isActive();
-        this.books = user.getBooks();
+        this.borrowedBooks = user.getBorrowedBooks();
+        this.wantedBooks = user.getWantedBooks();
     }
 
     public User getUser() {
@@ -37,7 +39,8 @@ public class LoggedUserDTO {
         user.setActive(active);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setBooks(books);
+        user.setBorrowedBooks(borrowedBooks);
+        user.setWantedBooks(wantedBooks);
 
         return user;
     }
@@ -90,12 +93,20 @@ public class LoggedUserDTO {
         this.active = active;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Set<Book> getBorrowedBooks() {
+        return borrowedBooks;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBorrowedBooks(Set<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
+
+    public Set<Book> getWantedBooks() {
+        return wantedBooks;
+    }
+
+    public void setWantedBooks(Set<Book> wantedBooks) {
+        this.wantedBooks = wantedBooks;
     }
 
     @Override

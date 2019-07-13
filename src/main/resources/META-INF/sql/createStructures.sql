@@ -4,6 +4,7 @@ use library;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS users_borrowed_books;
+DROP TABLE IF EXISTS users_wanted_books;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS authors_books;
 DROP TABLE IF EXISTS authors;
@@ -20,6 +21,11 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `users_borrowed_books` (
+  `user_id` bigint NOT NULL,
+  `book_id` bigint NOT NULL
+);
+
+CREATE TABLE `users_wanted_books` (
   `user_id` bigint NOT NULL,
   `book_id` bigint NOT NULL
 );
