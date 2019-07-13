@@ -45,4 +45,12 @@ public class UserService {
     public User getUser(String login) {
         return userRepository.getByLogin(login);
     }
+
+    public User getUser(Long id) {
+        return userRepository.getById(id);
+    }
+
+    public void save(User user) {
+        userRepository.save(user);
+    }
 }

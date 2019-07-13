@@ -45,14 +45,14 @@ public class BookDTO {
         this.authors = authors;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BookDTO bookDTO = (BookDTO) o;
-        return Objects.equals(title, bookDTO.title) &&
-                Objects.equals(authors, bookDTO.authors);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        BookDTO bookDTO = (BookDTO) o;
+//        return Objects.equals(title, bookDTO.title) &&
+//                Objects.equals(authors, bookDTO.authors);
+//    }
 
     @Override
     public int hashCode() {

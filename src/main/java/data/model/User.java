@@ -20,11 +20,17 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_borrowed_books",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private Set<Book> books = new HashSet<>();
+    private Set<Book> borrowedBooks = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_wanted_books",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    private Set<Book> wantedBooks = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -74,42 +80,19 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Set<Book> getBorrowedBooks() {
+        return borrowedBooks;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBorrowedBooks(Set<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return active == user.active &&
-                Objects.equals(id, user.id) &&
-                Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName);
+    public Set<Book> getWantedBooks() {
+        return wantedBooks;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, login, password, active, firstName, lastName);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", active=" + active +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", books=" + books +
-                '}';
+    public void setWantedBooks(Set<Book> wantedBooks) {
+        this.wantedBooks = wantedBooks;
     }
 }
