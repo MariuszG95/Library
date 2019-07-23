@@ -34,6 +34,7 @@
                     <tr>
                         <th>Tytuł</th>
                         <th>Autorzy</th>
+                        <th>Termin zwrotu</th>
                         <th>Akcja</th>
                     </tr>
                     <c:forEach items="${user.borrowedBooks}" var="book">
@@ -44,8 +45,9 @@
                                     ${author.firstName} ${author.lastName}<c:if test="${!status.last}">, </c:if>
                                 </c:forEach>
                             </td>
+                            <td>chuj, dupa, nie dziala</td>
                             <td>
-                                <a href="/book/${book.id}">Link</a>
+                                <a href="/book/${book.id}">Informacje o książce</a>
                                 <a href="/profile/delete-book/${book.id}">Oddaj książkę</a>
                             </td>
                         </tr>

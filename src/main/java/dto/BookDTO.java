@@ -3,6 +3,7 @@ package dto;
 import data.model.Author;
 import data.model.Book;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -12,6 +13,7 @@ public class BookDTO {
     private Long id;
     private String title;
     private Set<Author> authors = new HashSet<>();
+    private Date date;
 
     public BookDTO() {}
 

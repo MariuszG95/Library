@@ -22,12 +22,14 @@ CREATE TABLE `users` (
 
 CREATE TABLE `users_borrowed_books` (
   `user_id` bigint NOT NULL,
-  `book_id` bigint NOT NULL
+  `book_id` bigint NOT NULL,
+  `return_date` date NOT NULL
 );
 
 CREATE TABLE `users_wanted_books` (
   `user_id` bigint NOT NULL,
-  `book_id` bigint NOT NULL
+  `book_id` bigint NOT NULL,
+  `receipt_date` date NOT NULL
 );
 
 CREATE TABLE `books` (
