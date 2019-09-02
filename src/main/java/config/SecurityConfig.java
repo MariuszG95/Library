@@ -18,7 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-
         authenticationManagerBuilder.jdbcAuthentication()
                 .dataSource(dataSource())
                 .usersByUsernameQuery("SELECT login, password, active FROM users WHERE login = ?")
@@ -27,14 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-
         httpSecurity.formLogin();
         httpSecurity.logout().logoutUrl("/logout").logoutSuccessUrl("/home");
         httpSecurity.csrf().disable();
     }
 
     private DataSource dataSource() {
-
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/library?serverTimezone=UTC");

@@ -1,6 +1,7 @@
 package dto;
 
-import data.model.Book;
+import data.model.Borrow;
+import data.model.Order;
 import data.model.User;
 
 import java.util.HashSet;
@@ -11,36 +12,33 @@ public class LoggedUserDTO {
 
     private Long id;
     private String login;
+    private String email;
     private String password;
-    private String firstName;
-    private String lastName;
     private boolean active;
-    private Set<Book> borrowedBooks = new HashSet<>();
-    private Set<Book> wantedBooks = new HashSet<>();
+    private Set<Borrow> borrowSet = new HashSet<>();
+    private Set<Order> orderSet = new HashSet<>();
 
     public LoggedUserDTO() {}
 
     public LoggedUserDTO(User user) {
         this.id = user.getId();
         this.login = user.getLogin();
+        this.email = user.getEmail();
         this.password = user.getPassword();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
         this.active = user.isActive();
-        this.borrowedBooks = user.getBorrowedBooks();
-        this.wantedBooks = user.getWantedBooks();
+        this.borrowSet = user.getBorrowSet();
+        this.orderSet = user.getOrderSet();
     }
 
     public User getUser() {
         User user = new User();
         user.setId(id);
         user.setLogin(login);
+        user.setEmail(email);
         user.setPassword(password);
         user.setActive(active);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setBorrowedBooks(borrowedBooks);
-        user.setWantedBooks(wantedBooks);
+        user.setBorrowSet(borrowSet);
+        user.setOrderSet(orderSet);
 
         return user;
     }
@@ -61,28 +59,20 @@ public class LoggedUserDTO {
         this.login = login;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public boolean isActive() {
@@ -93,44 +83,25 @@ public class LoggedUserDTO {
         this.active = active;
     }
 
-    public Set<Book> getBorrowedBooks() {
-        return borrowedBooks;
+    public Set<Borrow> getBorrowSet() {
+        return borrowSet;
     }
 
-    public void setBorrowedBooks(Set<Book> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
+    public void setBorrowSet(Set<Borrow> borrowSet) {
+        this.borrowSet = borrowSet;
     }
 
-    public Set<Book> getWantedBooks() {
-        return wantedBooks;
+    public Set<Order> getOrderSet() {
+        return orderSet;
     }
 
-    public void setWantedBooks(Set<Book> wantedBooks) {
-        this.wantedBooks = wantedBooks;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LoggedUserDTO that = (LoggedUserDTO) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(login, that.login);
+    public void setOrderSet(Set<Order> orderSet) {
+        this.orderSet = orderSet;
     }
 
     @Override
     public int hashCode() {
 
         return Objects.hash(id, login);
-    }
-
-    @Override
-    public String toString() {
-        return "LoggedUserDTO{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
     }
 }

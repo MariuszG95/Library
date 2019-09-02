@@ -1,18 +1,18 @@
 package core.services;
 
-import data.repositories.AuthorRepository;
+import data.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class AuthorService {
+public class OrderService {
 
-    private AuthorRepository authorRepository;
+    private OrderRepository orderRepository;
 
     @Autowired
-    public AuthorService(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
     }
 }

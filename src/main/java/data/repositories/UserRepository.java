@@ -13,7 +13,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "INSERT INTO users_roles (login, role) VALUES (?1, 'ROLE_USER')", nativeQuery = true)
     void setUserRole(String login);
 
-    User getByLogin(String login);
-
-    User getById(Long id);
+    public User getUserByLogin(String login);
 }

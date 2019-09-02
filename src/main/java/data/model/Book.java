@@ -1,30 +1,50 @@
 package data.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "books")
+@Table
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
+
+    @Column(nullable = false)
     private String title;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "authors_books",
+    @Column(nullable = false)
+    private String category;
+
+    @Column(name = "publishing_house", nullable = false)
+    private String publishingHouse;
+
+    @Column(name = "publication_date", nullable = false)
+    private Date publicationDate;
+
+    @Column(nullable = false)
+    private String edition;
+
+    @Column(nullable = false)
+    private String language;
+
+    @Column(nullable = false)
+    private String identifier;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "books_authors",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = new HashSet<>();
+    private Set<Author> authorSet = new HashSet<>();
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -36,35 +56,59 @@ public class Book {
         this.title = title;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+    public String getCategory() {
+        return category;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Objects.equals(id, book.id) &&
-                Objects.equals(title, book.title) &&
-                Objects.equals(authors, book.authors);
+    public String getPublishingHouse() {
+        return publishingHouse;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, authors);
+    public void setPublishingHouse(String publishingHouse) {
+        this.publishingHouse = publishingHouse;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", authors=" + authors +
-                '}';
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public Set<Author> getAuthorSet() {
+        return authorSet;
+    }
+
+    public void setAuthorSet(Set<Author> authorSet) {
+        this.authorSet = authorSet;
     }
 }

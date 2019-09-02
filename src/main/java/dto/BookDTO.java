@@ -3,29 +3,44 @@ package dto;
 import data.model.Author;
 import data.model.Book;
 
+import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class BookDTO {
 
-    private Long id;
+    private long id;
     private String title;
-    private Set<Author> authors = new HashSet<>();
+    private String category;
+    private String publishingHouse;
+    private Date publicationDate;
+    private String edition;
+    private String language;
+    private String identifier;
+    private Set<AuthorDTO> authorSet = new HashSet<>();
 
-    public BookDTO() {}
+    public BookDTO convertToDTO(Book book) {
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setId(book.getId());
+        bookDTO.setTitle(book.getTitle());
+        bookDTO.setCategory(book.getCategory());
+        bookDTO.setPublishingHouse(book.getPublishingHouse());
+        bookDTO.setPublicationDate(book.getPublicationDate());
+        bookDTO.setEdition(book.getEdition());
+        bookDTO.setLanguage(book.getLanguage());
+        bookDTO.setIdentifier(book.getIdentifier());
+        for (Author author : book.getAuthorSet()) {
+            authorSet.add(new AuthorDTO().convertToDTO(author));
+        }
 
-    public BookDTO(Book book) {
-        this.id = book.getId();
-        this.title = book.getTitle();
-        this.authors = book.getAuthors();
+        return bookDTO;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -37,34 +52,59 @@ public class BookDTO {
         this.title = title;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+    public String getCategory() {
+        return category;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        BookDTO bookDTO = (BookDTO) o;
-//        return Objects.equals(title, bookDTO.title) &&
-//                Objects.equals(authors, bookDTO.authors);
-//    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, authors);
+    public String getPublishingHouse() {
+        return publishingHouse;
     }
 
-    @Override
-    public String toString() {
-        return "BookDTO{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", authors=" + authors +
-                '}';
+    public void setPublishingHouse(String publishingHouse) {
+        this.publishingHouse = publishingHouse;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public Set<AuthorDTO> getAuthorSet() {
+        return authorSet;
+    }
+
+    public void setAuthorSet(Set<AuthorDTO> authorSet) {
+        this.authorSet = authorSet;
     }
 }

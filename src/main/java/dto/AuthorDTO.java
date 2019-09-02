@@ -4,23 +4,24 @@ import data.model.Author;
 
 public class AuthorDTO {
 
-    private Long id;
+    private long id;
     private String firstName;
     private String lastName;
 
-    public AuthorDTO() {}
+    public AuthorDTO convertToDTO(Author author) {
+        AuthorDTO authorDTO = new AuthorDTO();
+        authorDTO.setId(author.getId());
+        authorDTO.setFirstName(author.getFirstName());
+        authorDTO.setLastName(author.getLastName());
 
-    public AuthorDTO(Author author) {
-        this.id = author.getId();
-        this.firstName = author.getFirstName();
-        this.lastName = author.getLastName();
+        return authorDTO;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

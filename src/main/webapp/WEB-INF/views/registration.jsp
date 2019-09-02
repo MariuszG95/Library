@@ -19,14 +19,9 @@
                         <td><font color="red">${registrationFormDTO.errors.get("login")}</font></td>
                     </tr>
                     <tr>
-                        <td>Imię</td>
-                        <td><form:input path="firstName" /></td>
+                        <td>e-Mail</td>
+                        <td><form:input path="email" /></td>
                         <td><font color="red">${registrationFormDTO.errors.get("firstName")}</font></td>
-                    </tr>
-                    <tr>
-                        <td>Nazwisko</td>
-                        <td><form:input path="lastName" /></td>
-                        <td><font color="red">${registrationFormDTO.errors.get("lastName")}</font></td>
                     </tr>
                     <tr>
                         <td>Hasło</td>

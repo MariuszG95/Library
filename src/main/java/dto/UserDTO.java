@@ -1,40 +1,38 @@
-package data.model;
+package dto;
 
-import javax.persistence.*;
+import data.model.Borrow;
+import data.model.Order;
+import data.model.User;
+
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(unique = true, nullable = false)
     private String login;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private boolean active;
+    private Set<BorrowDTO> borrowSet = new HashSet<>();
+    private Set<OrderDTO> orderSet = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_borrows",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "borrow_id"))
-    private Set<Borrow> borrowSet = new HashSet<>();
+    public UserDTO convertToDTO(User user) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setLogin(user.getLogin());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setActive(user.isActive());
+        for (Borrow borrow : user.getBorrowSet()) {
+            borrowSet.add(new BorrowDTO().convertToDTO(borrow));
+        }
+        for (Order order : user.getOrderSet()) {
+            orderSet.add(new OrderDTO().convertToDTO(order));
+        }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_orders",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private Set<Order> orderSet = new HashSet<>();
+        return userDTO;
+    }
 
     public long getId() {
         return id;
@@ -76,19 +74,19 @@ public class User {
         this.active = active;
     }
 
-    public Set<Borrow> getBorrowSet() {
+    public Set<BorrowDTO> getBorrowSet() {
         return borrowSet;
     }
 
-    public void setBorrowSet(Set<Borrow> borrowSet) {
+    public void setBorrowSet(Set<BorrowDTO> borrowSet) {
         this.borrowSet = borrowSet;
     }
 
-    public Set<Order> getOrderSet() {
+    public Set<OrderDTO> getOrderSet() {
         return orderSet;
     }
 
-    public void setOrderSet(Set<Order> orderSet) {
+    public void setOrderSet(Set<OrderDTO> orderSet) {
         this.orderSet = orderSet;
     }
 }

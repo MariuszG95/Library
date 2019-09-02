@@ -21,7 +21,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         try {
-            LoggedUserDTO loggedUserDTO = new LoggedUserDTO(userService.getUser(request.getUserPrincipal().getName()));
+            LoggedUserDTO loggedUserDTO = new LoggedUserDTO(userService.getUserByLogin(request.getUserPrincipal().getName()));
             request.getSession().setAttribute("user", loggedUserDTO);
         } catch (NullPointerException npe) {
             return true;

@@ -18,39 +18,27 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void insertUser(RegistrationFormDTO registrationFormDTO) {
-
-        User user = new User();
-        user.setLogin(registrationFormDTO.getLogin());
-        user.setPassword(registrationFormDTO.getPassword());
-        user.setActive(true);
-        user.setFirstName(registrationFormDTO.getFirstName());
-        user.setLastName(registrationFormDTO.getLastName());
-
-        userRepository.save(user);
-        userRepository.setUserRole(user.getLogin());
+    public User getUserByLogin(String login) {
+        return userRepository.getUserByLogin(login);
     }
 
     public boolean isLoginTaken(String login) {
-
         try {
-            User user = userRepository.getByLogin(login);
-            user.getLogin();
+            userRepository.getUserByLogin(login);
+            return true;
         } catch (NullPointerException npe) {
             return false;
         }
-        return true;
     }
 
-    public User getUser(String login) {
-        return userRepository.getByLogin(login);
-    }
+    public void addNewUser(RegistrationFormDTO registrationFormDTO) {
+        User user = new User();
+        user.setLogin(registrationFormDTO.getLogin());
+        user.setEmail(registrationFormDTO.getEmail());
+        user.setPassword(registrationFormDTO.getPassword());
+        user.setActive(true);
 
-    public User getUser(Long id) {
-        return userRepository.getById(id);
-    }
-
-    public void save(User user) {
         userRepository.save(user);
+        userRepository.setUserRole(user.getLogin());
     }
 }
